@@ -17,10 +17,12 @@ public class DataController {
     @RequestMapping(value = "/api/sensor/data", method = RequestMethod.POST)
     public ResponseEntity<?> getSensorData(@RequestBody SensorDataDto sensorDataDto){
         switch (sensorDataDto.getType()){
-            case TEMP ->
+            case TEMP:
                     simpMessagingTemplate.convertAndSend("/topic/temp", sensorDataDto.getValue());
-            case HUMIDITY ->
+                    break;
+            case HUMIDITY:
                     simpMessagingTemplate.convertAndSend("/topic/humidity", sensorDataDto.getValue());
+                    break;
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
