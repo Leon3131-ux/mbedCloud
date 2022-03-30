@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://localhost:8080/websocket");
+const socket = new WebSocket("ws://164.92.173.232:23552/websocket");
 const stompClient = Stomp.over(socket);
 
 stompClient.connect({}, () => {

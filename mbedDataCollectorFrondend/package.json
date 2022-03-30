@@ -13,7 +13,6 @@
     "@stomp/stompjs": "^6.1.2"
   },
   "dependencies": {
-    "http-server": "^14.1.0",
     "websocket": "^1.0.34"
   }
 }
