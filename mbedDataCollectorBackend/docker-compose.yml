@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  mbedStuff:
-    container_name: mbedStuff
+  mbed-tuff:
+    container_name: mbed-stuff
     build:
       context: "./"
       dockerfile: Dockerfile
