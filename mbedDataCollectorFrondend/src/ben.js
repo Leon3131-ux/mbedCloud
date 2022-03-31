@@ -1,7 +1,12 @@
-function cringe(){
-    for(let i = 0; i < 100000; i++){
-        alert("cringe")
-    }
-}
+$(document).ready(function () {
+    comcastifyjs.letsPrepareTheseImages();
+});
 
-window.onload = cringe
+$(window).load(function () {
+    comcastifyjs.fixMyImagesLoadingSoFast({
+        loadMaxPercent: 0.75,
+        loadSpeed: 1000,
+        loadIncrement: 5,
+        boxColor: '#ece4d8'
+    })();
+});
