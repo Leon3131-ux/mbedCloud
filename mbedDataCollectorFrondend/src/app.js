@@ -30,15 +30,15 @@ $(window).on('beforeunload', function(){
 });
 
 function addValueToChart(value, chart){
-    let labels = buttonChart.data.labels;
-    if(buttonChart.data.datasets[0].data.length >= labels.length){
-        buttonChart.data.datasets[0].data.splice(0, 1);
+    let labels = chart.data.labels;
+    if(chart.data.datasets[0].data.length >= labels.length){
+        chart.data.datasets[0].data.splice(0, 1);
 
         labels.splice(0, 1)
         labels.push(labels[labels.length - 1] + 1);
     }
-    buttonChart.data.datasets[0].data.push(value);
-    buttonChart.update();
+    chart.data.datasets[0].data.push(value);
+    chart.update();
 }
 
 function initializeButtonChart(element){
