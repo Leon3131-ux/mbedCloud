@@ -8,6 +8,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class DataController {
@@ -15,14 +17,22 @@ public class DataController {
     private final SimpMessagingTemplate simpMessagingTemplate;
 
     @RequestMapping(value = "/api/sensor/data", method = RequestMethod.POST)
-    public ResponseEntity<?> getSensorData(@RequestBody SensorDataDto sensorDataDto){
-        switch (sensorDataDto.getType()){
-            case TEMP:
-                    simpMessagingTemplate.convertAndSend("/topic/temp", sensorDataDto.getValue());
+    public ResponseEntity<?> getSensorData(@RequestBody List<SensorDataDto> sensorDataDtos){
+        for(SensorDataDto dto : sensorDataDtos){
+            switch (dto.getType()){
+                case TEMP:
+                    simpMessagingTemplate.convertAndSend("/topic/temp", dto.getValue());
                     break;
-            case HUMIDITY:
-                    simpMessagingTemplate.convertAndSend("/topic/humidity", sensorDataDto.getValue());
+                case HUM:
+                    simpMessagingTemplate.convertAndSend("/topic/humidity", dto.getValue());
                     break;
+                case BEATC:
+                    simpMessagingTemplate.convertAndSend("/topic/beatc", dto.getValue());
+                    break;
+                case BTNC:
+                    simpMessagingTemplate.convertAndSend("/topic/btnc", dto.getValue());
+                    break;
+            }
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
