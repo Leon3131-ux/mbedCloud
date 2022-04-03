@@ -32,6 +32,8 @@ public class DataController {
                 case BTNC:
                     simpMessagingTemplate.convertAndSend("/topic/btnc", dto.getValue());
                     break;
+                case RFID:
+                    simpMessagingTemplate.convertAndSend("/topic/rfid", dto.getValue());
             }
         }
         return new ResponseEntity<>(HttpStatus.OK);

@@ -5,6 +5,7 @@ public enum SensorType {
     TEMP,
     HUM,
     BEATC,
-    BTNC
+    BTNC,
+    RFID
 
 }
