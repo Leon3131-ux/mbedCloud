@@ -9,7 +9,7 @@ $( document ).ready(function() {
     });
     stompClient.connect({}, () => {
         console.log("successfully connected");
-        stompClient.subscribe("/topic/hum", function (humidity) {
+        stompClient.subscribe("/topic/humidity", function (humidity) {
             if(humChart != null){
                 addValueToChart(humidity.body, humChart);
             }
