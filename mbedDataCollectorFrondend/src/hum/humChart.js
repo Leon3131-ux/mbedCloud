@@ -1,4 +1,4 @@
-const socket = new SockJS("http://localhost:8080/websocket");
+const socket = new SockJS("http://164.92.173.232:23552/websocket");
 const stompClient = Stomp.over(socket);
 
 let humChart = null;
