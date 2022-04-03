@@ -32,6 +32,9 @@ $( document ).ready(function() {
                 addValueToChart(taps.body, gyroChat);
             }
         });
+        stompClient.subscribe("/topic/rfid", function (rfid) {
+            updateRfidHeader(rfid.body);
+        });
     });
     const buttonChartElement = $("#btncChart");
     const tempChartElement = $("#tempChart");
@@ -46,3 +49,7 @@ $( document ).ready(function() {
 $(window).on('beforeunload', function(){
     socket.close();
 });
+
+function updateRfidHeader(uuid){
+    $("#rfidHeader").text("Current RFID UUID: " + uuid);
+}
