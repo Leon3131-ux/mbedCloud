@@ -1,0 +1,24 @@
+const socket = new SockJS("http://localhost:8080/websocket");
+const stompClient = Stomp.over(socket);
+
+let btncChart = null;
+
+$( document ).ready(function() {
+    $("#navbar").load("../shared/navbar.html", function (){
+        $("#btncChartLink").attr("aria-current", "true").addClass("active");
+    });
+    stompClient.connect({}, () => {
+        console.log("successfully connected");
+        stompClient.subscribe("/topic/btnc", function (clicks) {
+            if(btncChart != null){
+                addValueToChart(clicks.body, btncChart);
+            }
+        });
+    });
+    const btncChartElement = $("#btncChart");
+    btncChart = initializeButtonChart(btncChartElement);
+});
+
+$(window).on('beforeunload', function(){
+    socket.close();
+});

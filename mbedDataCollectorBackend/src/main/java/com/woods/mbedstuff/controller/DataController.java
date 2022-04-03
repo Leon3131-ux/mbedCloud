@@ -27,7 +27,7 @@ public class DataController {
                     simpMessagingTemplate.convertAndSend("/topic/humidity", dto.getValue());
                     break;
                 case BEATC:
-                    simpMessagingTemplate.convertAndSend("/topic/beatc", dto.getValue());
+                    simpMessagingTemplate.convertAndSend("/topic/gyro", dto.getValue());
                     break;
                 case BTNC:
                     simpMessagingTemplate.convertAndSend("/topic/btnc", dto.getValue());
