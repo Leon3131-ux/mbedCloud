@@ -13,10 +13,11 @@ function submitText() {
     $.ajax({
         type: 'POST',
         url: 'http://164.92.173.232:23552/api/display',
-        data: JSON.stringify({"displayText": $("#displayText").innerText}),
+        contentType: 'application/json',
+        data: JSON.stringify({"displayText": $("#displayText").val()}),
         success: function (){
             console.log('Display text submitted successfully');
         },
-        dataType: 'application/json'
+        dataType: 'text'
     })
 }
