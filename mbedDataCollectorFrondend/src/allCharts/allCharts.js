@@ -12,7 +12,7 @@ $( document ).ready(function() {
     });
     stompClient.connect({}, () => {
         console.log("successfully connected");
-        stompClient.subscribe("/topic/btnc", function (clicks) {
+        stompClient.subscribe("/topic/button", function (clicks) {
             if(buttonChart != null){
                 addValueToChart(clicks.body, buttonChart);
             }

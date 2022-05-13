@@ -17,6 +17,6 @@ function submitText() {
         success: function (){
             console.log('Display text submitted successfully');
         },
-        dataType: 'text/json'
+        dataType: 'application/json'
     })
 }
