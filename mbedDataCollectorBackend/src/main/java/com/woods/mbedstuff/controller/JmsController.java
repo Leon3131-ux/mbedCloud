@@ -41,6 +41,12 @@ public class JmsController {
         simpMessagingTemplate.convertAndSend("/topic/gyro", gyroTaps);
     }
 
+    @JmsListener(destination = "iotkit.rfid")
+    public void readRfid(BytesMessage message) throws JMSException {
+        String gyroTaps = convertMessageToString(message);
+        simpMessagingTemplate.convertAndSend("/topic/rfid", gyroTaps);
+    }
+
     private String convertMessageToString(Message message) throws JMSException {
         BytesMessage byteMessage = (BytesMessage) message;
         byte[] byteData;
