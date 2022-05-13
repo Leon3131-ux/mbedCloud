@@ -1,4 +1,4 @@
-const socket = new SockJS("mbed-cloud-git-ws-test-project.apps.ocp-dev01.wgn.wuerth.com/websocket");
+const socket = new SockJS("http://164.92.173.232:23552/websocket");
 const stompClient = Stomp.over(socket);
 
 let buttonChart = null;
